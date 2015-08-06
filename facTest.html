@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+</head>
+<body>
+	<input type="text" id="num1">
+	<select id="cal">
+		<option value ="+">+</option>
+		<option value ="-">-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+	</select>
+	<input type="text" id="num2">
+	<button onClick="getdata()">=</button>
+	<input type="text" id="result">
+</body>
+</html>
+
+<script type="text/javascript">
+
+function getdata(){
+	$.ajax({
+		url: "fac.php",
+		data: {
+			num1:$("#num1").val(),num2:$("#num2").val(),cal:$("#cal option:selected").text()
+		},
+		success: function(data){
+			$("#result").val(data);
+		}
+	});
+}
+</script>
